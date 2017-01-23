@@ -1,0 +1,7 @@
+[package]
+name = "sun-times"
+version = "0.1.0"
+authors = ["Euan Rochester <euan@rochester.me.uk>"]
+
+[dependencies]
+chrono = "0.2.0"
