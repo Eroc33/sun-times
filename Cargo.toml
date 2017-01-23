@@ -2,6 +2,9 @@
 name = "sun-times"
 version = "0.1.0"
 authors = ["Euan Rochester <euan@rochester.me.uk>"]
+license = "MIT/Apache-2.0"
+keywords = ["sunrise","sunset"]
+repository = "https://github.com/Eroc33/sun-times"
 
 [dependencies]
 chrono = "0.2.0"
