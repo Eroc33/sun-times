@@ -41,7 +41,7 @@ pub fn sun_times(date: Date<UTC>, latitude:f64, longitude:f64, elevation:f64) ->
     let ecliptic_longitude = (solar_mean_anomaly+center+180.0+ARGUMENT_OF_PERIHELION) % 360.0;
     
     let declination = (ecliptic_longitude.to_radians().sin() * (23.44f64).to_radians().sin()).asin();
-    let mut hour_angle = (((-0.83 + elevation_correction).to_radians().sin()-(latitude.to_radians().sin()*declination.sin()))/(latitude.to_radians().cos()*declination.cos())).acos().to_degrees();
+    let hour_angle = (((-0.83 + elevation_correction).to_radians().sin()-(latitude.to_radians().sin()*declination.sin()))/(latitude.to_radians().cos()*declination.cos())).acos().to_degrees();
     
     let solar_transit = mean_solar_time + 0.0053 * solar_mean_anomaly.to_radians().sin() - 0.0069 * (2.0*ecliptic_longitude).to_radians().sin();
     let solar_transit_date = jan_2000 + Duration::days(solar_transit.round() as i64);
