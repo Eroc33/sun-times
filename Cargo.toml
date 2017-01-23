@@ -5,6 +5,7 @@ authors = ["Euan Rochester <euan@rochester.me.uk>"]
 license = "MIT/Apache-2.0"
 keywords = ["sunrise","sunset"]
 repository = "https://github.com/Eroc33/sun-times"
+description = "Calculate sunset and sunrise times at given latitude and longitude"
 
 [dependencies]
 chrono = "0.2.0"
