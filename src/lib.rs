@@ -1,7 +1,6 @@
 extern crate chrono;
 
-use chrono::{Date,NaiveDate,UTC,DateTime};
-use chrono::duration::Duration;
+use chrono::{Date,NaiveDate,UTC,DateTime,Duration};
 
 const HOUR_ANGLE_TO_MINUTES_FACTOR:f64 = 4.0;
 
@@ -33,7 +32,7 @@ pub fn sun_times(date: Date<UTC>, latitude:f64, longitude:f64, elevation:f64) ->
     let elevation_correction = -2.076*(elevation.sqrt())/60.0;
     
     let jan_2000 = Date::<UTC>::from_utc(NaiveDate::from_ymd(2000,1,1),UTC);
-    let time_since_2000:Duration = date - jan_2000;
+    let time_since_2000:Duration = date.signed_duration_since(jan_2000);
     
     let mean_solar_time = (time_since_2000.num_days() as f64) + 0.0008 - (longitude/360.0);
     let solar_mean_anomaly = (357.5291 + 0.98560028 * mean_solar_time) % 360.0;
