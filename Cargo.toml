@@ -1,6 +1,6 @@
 [package]
 name = "sun-times"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Euan Rochester <euan@rochester.me.uk>"]
 license = "MIT/Apache-2.0"
 keywords = ["sunrise","sunset"]
