@@ -6,6 +6,10 @@ license = "MIT/Apache-2.0"
 keywords = ["sunrise","sunset"]
 repository = "https://github.com/Eroc33/sun-times"
 description = "Calculate sunset and sunrise times at given latitude and longitude"
+edition = "2021"
 
 [dependencies]
-chrono = "0.4.0"
+chrono = "0.4.23"
+
+[dev-dependencies]
+num-traits = "0.2"
