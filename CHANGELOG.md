@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - YYYY-MM-DD
+## [0.2.0] - 2023-02-16
 ### Added
  - Now keeping a changelog!
  - altitude function, as a starting point to support arctic regions
@@ -15,3 +15,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - sun_times takes a NaiveDate, as chrono's Date<T> has been deprecated
 ### Fixed
  - Fixed ["day ahead" bug](https://github.com/Eroc33/sun-times/issues/1)
+ - Fixed ["negative altitudes" bug](https://github.com/Eroc33/sun-times/issues/2)

@@ -47,16 +47,21 @@ impl std::ops::Add<JulianDate> for JulianDate {
 
 /// Calculates the approximate sunset and sunrise times at a given latitude, longitude, and altitude
 ///
+/// Note that elevation is used to correct for atmospheric refraction, so negative elevations are treated as being at
+/// sea level due to having minimal difference in refraction to being at sea level
+///
 /// # Arguments
 ///
 /// * `date` - The date on which to calculate the sunset and sunrise, in UTC
 /// * `latitude` - The latitude at which to calculate the times. Expressed as degrees
 /// * `longitude` - The longitude at which to calculate the times. Expressed as degrees
-/// * `elevation` - The elevation at which to calculate the times. Expressed as meters above sea level
+/// * `elevation` - The elevation at which to calculate the times. Expressed as meters above sea level. Negative values will be ignored
 ///
 /// # Return value
 ///
-/// Returns a tuple of `(sunrise,sunset)`
+/// Returns
+///  - `None` if the date is not representable in chrono (~5M years from now), or sunsets/rises cannot be calculated due to long arctic/antarctic day/night (outside ~±67° of latitude)
+///  - `Some((sunrise,sunset))` otherwise
 ///
 /// # Examples
 ///
@@ -81,6 +86,9 @@ pub fn sun_times(
             .single()?,
     );
 
+    //elevations below sea level will have minimal atmospheric refraction + the
+    //calculation is broken below sea level, so treat negative elevations as being at sea level
+    let elevation = elevation.max(0.0);
     let elevation_correction = -2.076 * (elevation.sqrt()) / 60.0;
 
     let days_since_2000 = (julian_date - JAN_2000 + LEAP_SECONDS).ceil_days();
